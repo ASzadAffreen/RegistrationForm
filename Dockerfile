@@ -1,7 +1,5 @@
 FROM nginx
 MAINTAINER devops@AA
-WORKDIR /app
-COPY index.html /app
-COPY styles.css /app
+COPY . /usr/share/nginx/html
 EXPOSE 80
 VOLUME /aap/logs
