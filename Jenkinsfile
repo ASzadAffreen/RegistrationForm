@@ -30,7 +30,13 @@ pipeline
             steps {
                 script {
           sh ('aws eks update-kubeconfig --name Dtag-Prod --region us-east-1')
-          sh 'kubectl apply -f deploy.yaml'
+                    try {
+                          sh 'kubectl delete -f deploy.yaml'
+                           sh 'kubectl apply -f deploy.yaml'
+                    }
+                    catch {
+                         sh 'kubectl apply -f deploy.yaml'
+                    }
 }
 }
 }
