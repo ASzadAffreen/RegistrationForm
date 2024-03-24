@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+Kind: Deployment
+metadata:
+  namespace: dtag-dev
+  name: loginform
+  labels:
+    app: loginform
+    version: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loginform
+      version: dev
+  template:
+    metadata:
+      name: loginform
+      labels:
+        app: loginform
+        version: dev
+    spec:
+      containers:
+      - name: loginform
+        image: mohammadaszadali/loginformdtag
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 200m
+            memory: 1Gi
+          limits:
+            cpu: 500m
+            memory: 2Gi
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: dtag-dev
+  name: loginformdtag
+  labels:
+    app: loginform-react
+    version: dev
+spec:
+  type: LoadBalancer
+  ports:
+  - targetPort: 80
+    port: 80
+  selector:
+    app: loginform
+    version: dev
