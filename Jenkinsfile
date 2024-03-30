@@ -1,46 +1,25 @@
 pipeline
 {
     agent any;
-    stages{
-        stage("clone-code")
+    def repository_Name= "registrationForm"
+    //def build_number= ${currentBuild.number}
+    def image=${registrationForm}:${currentBuild.number}
+environment 
+    {
+        branch = "main"
+    }
+stages
+    {
+        stage
         {
-            steps{
-                git credentialsId: 'github',branch: 'main', url: 'https://github.com/ASzadAffreen/RegistrationForm.git'
-            }
-        }
-        stage("docker-build")
-        {
-            steps{
-                sh "docker build -t react-login-form ."
-            }
-        }
-        stage("docker-push")
-        {
-            steps
+            when 
             {
-                withCredentials([string(credentialsId: 'dockerid', variable: 'dockerpwd')]) {
-                sh "docker login -u mohammadaszadali -p ${dockerpwd}"
-                sh "docker tag react-login-form:latest mohammadaszadali/loginformdtag"
-                sh "docker push mohammadaszadali/loginformdtag"
-}
+            environment name:'branch' ,value: 'main'
             }
-        }
-        stage("Deploy")
+        steps
         {
-            steps {
-                script {
-          sh ('aws eks update-kubeconfig --name Dtag-Prod --region us-east-1')
-                    try {
-                          sh 'kubectl delete -f deploy.yaml'
-                           sh 'kubectl apply -f deploy.yaml'
-                    }
-                    catch {
-                         sh 'kubectl apply -f deploy.yaml'
-                    }
+            git credentialsId: 'github',branch: 'main', url: 'https://github.com/ASzadAffreen/RegistrationForm.git'
+        }
+    }
+    }
 }
-}
-}
-}
-    
-}
-        
