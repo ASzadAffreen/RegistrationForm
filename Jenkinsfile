@@ -41,6 +41,7 @@ stages
 }
 
             }
+        }
             stage("Deploy")
         {
             steps {
