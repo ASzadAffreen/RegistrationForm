@@ -16,7 +16,7 @@ stages
         {
             when 
             {
-            environment name:'branch' ,value: 'main'
+            environment name:'branch' ,value: 'master'
             }
         steps
         {
