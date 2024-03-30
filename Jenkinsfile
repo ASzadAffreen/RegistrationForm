@@ -7,8 +7,9 @@ environment
         branch = "main"
        repository_Name= "registrationForm"
     //def build_number= ${currentBuild.number}
-       image=${registrationForm}:${currentBuild.number}
+       image="${registrationForm}:${currentBuild.number}"
     }
+
 stages
     {
         stage("clone")
