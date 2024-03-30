@@ -50,7 +50,7 @@ stages
                           sh 'kubectl delete -f deploy.yaml'
                            sh 'kubectl apply -f deploy.yaml'
                     }
-                    catch {
+                    catch(e) {
                          sh 'kubectl apply -f deploy.yaml'
                     }
 }
