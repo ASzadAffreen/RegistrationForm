@@ -5,9 +5,9 @@ pipeline
 environment 
     {
         branch = "main"
-       repository_Name= "registrationForm"
+       repository_name= "registrationform"
     //def build_number= ${currentBuild.number}
-       image="${repository_Name}:${currentBuild.number}"
+       image="${repository_name}:${currentBuild.number}"
     }
 
 stages
