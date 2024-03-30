@@ -36,8 +36,8 @@ stages
             {
                 withCredentials([string(credentialsId: 'dockerid', variable: 'dockerpwd')]) {
                 sh "docker login -u mohammadaszadali -p ${dockerpwd}"
-                sh "docker tag  ${image} mohammadaszadali/l ${image}"
-                sh "docker push mohammadaszadali/ ${image}"
+                sh "docker tag  ${image} mohammadaszadali/${image}"
+                sh "docker push mohammadaszadali/${image}"
 }
 
             }
