@@ -41,6 +41,21 @@ stages
 }
 
             }
+            stage("Deploy")
+        {
+            steps {
+                script {
+          sh ('aws eks update-kubeconfig --name Dev-DTag --region us-east-1')
+                    try {
+                          sh 'kubectl delete -f deploy.yaml'
+                           sh 'kubectl apply -f deploy.yaml'
+                    }
+                    catch {
+                         sh 'kubectl apply -f deploy.yaml'
+                    }
+}
+}
         }
     }
+}
 }
