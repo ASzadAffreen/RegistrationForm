@@ -5,13 +5,13 @@ pipeline
 environment 
     {
         branch = "main"
-         def repository_Name= "registrationForm"
+       repository_Name= "registrationForm"
     //def build_number= ${currentBuild.number}
-    def image=${registrationForm}:${currentBuild.number}
+       image=${registrationForm}:${currentBuild.number}
     }
 stages
     {
-        stage
+        stage("clone")
         {
             when 
             {
