@@ -1,12 +1,13 @@
 pipeline
 {
     agent any;
-    def repository_Name= "registrationForm"
-    //def build_number= ${currentBuild.number}
-    def image=${registrationForm}:${currentBuild.number}
+   
 environment 
     {
         branch = "main"
+         def repository_Name= "registrationForm"
+    //def build_number= ${currentBuild.number}
+    def image=${registrationForm}:${currentBuild.number}
     }
 stages
     {
