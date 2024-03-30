@@ -7,7 +7,7 @@ environment
         branch = "main"
        repository_Name= "registrationForm"
     //def build_number= ${currentBuild.number}
-       image="${registrationForm}:${currentBuild.number}"
+       image="${repository_Name}:${currentBuild.number}"
     }
 
 stages
