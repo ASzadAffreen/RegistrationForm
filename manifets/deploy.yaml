@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: loginform
-        image: mohammadaszadali/registrationform:12
+        image: mohammadaszadali/registrationform:14
         imagePullPolicy: Always
         ports:
         - containerPort: 80
